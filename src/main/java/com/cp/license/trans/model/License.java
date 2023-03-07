@@ -1,7 +1,11 @@
-package com.cp.license.trans.po;
+package com.cp.license.trans.model;
 
-public class License {
+import java.io.Serializable;
 
+public class License implements Serializable{
+
+	
+	private static final long serialVersionUID = 1L;
 	private int Id;
 	private String LicenseName;
 	private String LicenseIP;

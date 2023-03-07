@@ -3,11 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<properties resource="druid.properties" />
 	<settings>
-		<setting name="cacheEnable" value="true"/>
+		<setting name="cacheEnabled" value="true" />
 	</settings>
-    <!-- 设置实体别名 -->
-    <typeAliases>
-        <package name="com.cp.license.trans.po" />
-    </typeAliases>
+	<!-- 设置实体别名 -->
+	<typeAliases>
+		<package name="com.cp.license.trans.model" />
+	</typeAliases>
+	<environments default="mysql">
+		<environment id="mysql">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="com.cp.license.trans.factory.DruidDataSourceFactory">
+				<property name="driverClass" value="${jdbc.driverClassName}" />
+				<property name="jdbcUrl" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<package name="com.cp.license.trans.dao" />
+	</mappers>
 </configuration>

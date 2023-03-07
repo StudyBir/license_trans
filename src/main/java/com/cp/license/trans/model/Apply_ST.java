@@ -1,8 +1,13 @@
-package com.cp.license.trans.po;
+package com.cp.license.trans.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Apply_ST {
+public class Apply_ST implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int Id;
 	private Byte Stra1Acc;
 	private String HeadIP;

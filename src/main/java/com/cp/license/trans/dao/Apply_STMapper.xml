@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cp.license.trans.dao.Apply_STMapper">
+	<cache />
+	<select id="findByName"
+		resultType="com.cp.license.trans.model.Apply_ST">
+		select a.* from (select Id from license where name=#{name}) l left join license_apply_st la on
+		l.Id=la.LicenseId left join apply_st a on la.SubscribeId=a.Id
+	</select>
+</mapper>
