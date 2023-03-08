@@ -43,10 +43,15 @@ public class ApplyUtils {
 	 * @return
 	 * @throws ParseException 
 	 */
-	public static boolean belongCalendar(Date beginTime, Date endTime) throws ParseException {
+	public static boolean belongCalendar(Date beginTime, Date endTime){
 		SimpleDateFormat df = new SimpleDateFormat("HH:mm"); // 设置日期格式
 		Date nowTime = null;
-		nowTime = df.parse(df.format(new Date()));
+		try {
+			nowTime = df.parse(df.format(new Date()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         if (nowTime.getTime() == beginTime.getTime()
                 || nowTime.getTime() == endTime.getTime()) {
             return true;

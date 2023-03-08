@@ -7,7 +7,6 @@
 	<cache />
 	<select id="findByName"
 		resultType="com.cp.license.trans.model.Apply_ST">
-		select a.* from (select Id from license where name=#{name}) l left join license_apply_st la on
-		l.Id=la.LicenseId left join apply_st a on la.SubscribeId=a.Id
+		select a.* from (select AstId from license where LicenseName=#{name}) l left join apply_st a on l.AstId=a.Id
 	</select>
 </mapper>

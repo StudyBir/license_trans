@@ -3,13 +3,13 @@ package com.cp.license.trans.bo;
 public class License_Transmit {
 
 	private String name;
-	private String port;
+	private int port;
 
 	public License_Transmit() {
 		super();
 	}
 
-	public License_Transmit(String name, String port) {
+	public License_Transmit(String name, int port) {
 		super();
 		this.name = name;
 		this.port = port;
@@ -23,11 +23,11 @@ public class License_Transmit {
 		this.name = name;
 	}
 
-	public String getPort() {
+	public int getPort() {
 		return port;
 	}
 
-	public void setPort(String port) {
+	public void setPort(int port) {
 		this.port = port;
 	}
 

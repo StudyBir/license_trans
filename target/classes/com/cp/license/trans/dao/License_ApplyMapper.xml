@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cp.license.trans.dao.License_ApplyMapper">
+	<cache />
+	<select id="useCount">
+		select count(1) from license_apply
+		where LicenseName = #{name} and isnull(EndTime);
+	</select>
+	
+	<insert id="insert" parameterType="com.cp.license.trans.model.License_Apply" useGeneratedKeys="true" keyProperty="Id">
+		insert into License_Apply (LicenseName,Ip,BeginTime) values (#{LicenseName},#{Ip},#{BeginTime})
+	</insert>
+	
+	<update id="update">
+		update License_Apply set EndTime = #{EndTime} where Id = #{Id}
+	</update>
+</mapper>
