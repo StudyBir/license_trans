@@ -35,6 +35,9 @@ public class TransMessageServer implements Runnable {
 		License_Apply la = new License_Apply(0, license.getLicenseName(), socket.getInetAddress().toString(),
 				sdf.format(new Date()), null);
 		try {
+			//设置超时时间30s
+			socket.setSoTimeout(30 * 1000);
+			license_server.setSoTimeout(30 * 1000);
 			// 连接License服务器并获取其输入输出流
 			license_server = new Socket(license.getLicenseIP(), license.getLicensePort());
 			InputStream server_is = license_server.getInputStream();
@@ -71,12 +74,12 @@ public class TransMessageServer implements Runnable {
 			e.printStackTrace();
 		} finally {
 			try {
-				socket.shutdownOutput();
-				socket.shutdownOutput();
 				license_server.shutdownInput();
 				license_server.shutdownOutput();
-				socket.close();
 				license_server.close();
+				socket.shutdownOutput();
+				socket.shutdownOutput();
+				socket.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
